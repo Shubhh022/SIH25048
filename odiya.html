@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nutrition Match Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 id="title">🍽 Match the Following: Nutrition in Animals</h1>
+    <button id="langBtn">Switch to Odia</button>
+
+    <div class="match-container">
+      <div class="column" id="left-column">
+        <h3 id="organsTitle">Organs / Processes</h3>
+        <div class="item" draggable="true" id="mouth">Mouth</div>
+        <div class="item" draggable="true" id="stomach">Stomach</div>
+        <div class="item" draggable="true" id="small-intestine">Small Intestine</div>
+        <div class="item" draggable="true" id="large-intestine">Large Intestine</div>
+        <div class="item" draggable="true" id="egestion">Egestion</div>
+      </div>
+
+      <div class="column" id="right-column">
+        <h3 id="functionsTitle">Functions</h3>
+        <div class="drop-zone" data-match="mouth" id="func-mouth">Chewing and mixing with saliva</div>
+        <div class="drop-zone" data-match="stomach" id="func-stomach">Breakdown using acid and enzymes</div>
+        <div class="drop-zone" data-match="small-intestine" id="func-small-intestine">Absorption of nutrients</div>
+        <div class="drop-zone" data-match="large-intestine" id="func-large-intestine">Absorption of water</div>
+        <div class="drop-zone" data-match="egestion" id="func-egestion">Removal of undigested food</div>
+      </div>
+    </div>
+    <div id="result"></div>
+  </div>
+  <script>
+    const translations = {
+      english: {
+        title: "🍽 Match the Following: Nutrition in Animals",
+        organsTitle: "Organs / Processes",
+        functionsTitle: "Functions",
+        mouth: "Mouth",
+        stomach: "Stomach",
+        smallIntestine: "Small Intestine",
+        largeIntestine: "Large Intestine",
+        egestion: "Egestion",
+        funcMouth: "Chewing and mixing with saliva",
+        funcStomach: "Breakdown using acid and enzymes",
+        funcSmall: "Absorption of nutrients",
+        funcLarge: "Absorption of water",
+        funcEgestion: "Removal of undigested food"
+      },
+      odia: {
+        title: "🍽 ମିଳାଇବା: ପଶୁମାନଙ୍କର ପୋଷଣ",
+        organsTitle: "ଅଙ୍ଗ / ପ୍ରକ୍ରିୟା",
+        functionsTitle: "କାର୍ଯ୍ୟ",
+        mouth: "ମୁହଁ",
+        stomach: "ଉଦର",
+        smallIntestine: "ସ୍ମଲ୍ ଆନ୍ତ୍ର",
+        largeIntestine: "ଲାର୍ଜ ଆନ୍ତ୍ର",
+        egestion: "ବିସର୍ଜନ",
+        funcMouth: "ଚବାଇବା ଏବଂ ଲାଲା ସହିତ ମିଶିବା",
+        funcStomach: "ଆମ୍ଲ ଏବଂ ଏନଜାଇମ୍‌ ଦ୍ୱାରା ଭାଙ୍ଗିବା",
+        funcSmall: "ପୋଷକତତ୍ତ୍ୱର ଶୋଷଣ",
+        funcLarge: "ପାଣିର ଶୋଷଣ",
+        funcEgestion: "ଅପାଚ୍ୟ ଖାଦ୍ୟର ବିସର୍ଜନ"
+      }
+    };
+
+    let currentLang = "english";
+
+    document.getElementById("langBtn").addEventListener("click", () => {
+      currentLang = currentLang === "english" ? "odia" : "english";
+      updateLanguage();
+    });
+
+    function updateLanguage() {
+      const t = translations[currentLang];
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("organsTitle").textContent = t.organsTitle;
+      document.getElementById("functionsTitle").textContent = t.functionsTitle;
+
+      document.getElementById("mouth").textContent = t.mouth;
+      document.getElementById("stomach").textContent = t.stomach;
+      document.getElementById("small-intestine").textContent = t.smallIntestine;
+      document.getElementById("large-intestine").textContent = t.largeIntestine;
+      document.getElementById("egestion").textContent = t.egestion;
+
+      document.getElementById("func-mouth").textContent = t.funcMouth;
+      document.getElementById("func-stomach").textContent = t.funcStomach;
+      document.getElementById("func-small-intestine").textContent = t.funcSmall;
+      document.getElementById("func-large-intestine").textContent = t.funcLarge;
+      document.getElementById("func-egestion").textContent = t.funcEgestion;
+
+      document.getElementById("langBtn").textContent =
+        currentLang === "english" ? "Switch to Odia" : "Switch to English";
+    }
+  </script>
+</body>
+</html>
